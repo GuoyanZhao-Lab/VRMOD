@@ -11,11 +11,12 @@ To set VRMOD up:
    
 3. modify the script VRMOD_V0.1.pl at the following lines to use your system-specific path to the files and director.
    
-software path
+software path:
+
 my $path_patser = "/ref/gzlab/software/VRMOD_V0.1/patser-v3e ";                                                      
 my $path_alphabet = "/ref/gzlab/software/VRMOD_V0.1/alphabet";
 
- input position weigth matrix                                                                                       
+ input position weigth matrix:                                                                                       
 my $dir = "/ref/gzlab/data/Mouse_phylonet/Mouse_phylonet_L30_Short_combined_Strategy2_final";  
 
 4. example command line
