@@ -1,26 +1,202 @@
 # VRMOD
-Vertebrate Regulatory MOdule Detector (VRMOD), an algorithm to accurately predict cis-regulatory modules in the vertebrate genomes.
 
-To set VRMOD up:
-1. Download the following code:
-  VRMOD_V0.1.pl, 
-  alphabet, 
-  patser-v3e
+## Overview
 
-2. Download the position weight matrix files: Mouse_phylonet_L30_Short_combined_Strategy2_final.tgz and unzip it.
-   
-3. modify the script VRMOD_V0.1.pl at the following lines to use your system-specific path to the files and director.
-   
-software path:
+Vertebrate Regulatory Module Detector (VRMOD) is a computational framework for predicting cis-regulatory modules (CRMs) in vertebrate genomes.
 
-my $path_patser = "/ref/gzlab/software/VRMOD_V0.1/patser-v3e ";                                                      
-my $path_alphabet = "/ref/gzlab/software/VRMOD_V0.1/alphabet";
+The software identifies clusters of transcription factor binding sites and predicts putative regulatory modules from genomic DNA sequences.
 
- input position weigth matrix:                                                                                       
-my $dir = "/ref/gzlab/data/Mouse_phylonet/Mouse_phylonet_L30_Short_combined_Strategy2_final";  
+---
 
-4. example command line
-   perl  VRMOD_V0.1.pl "input dir path" "fasta input sequence file name"
-   
-5. output file will be automatically generated in the input directory named .pred_mod.txt . Each input file will have a corresponding output file. If the command was successfully completed a line of "# program finished ." will be printed at the end of the output file.
+## Repository Contents
+
+| File | Description |
+|--------|-------------|
+| VRMOD_V0.1.pl | Main VRMOD prediction script |
+| VRMOD_V0.1_RunOnHTCF.pl | Script for running VRMOD on HTCF |
+| alphabet | Alphabet file required by Patser |
+| patser-v3e | Patser executable |
+| Mouse_phylonet_L30_Short_combined_Strategy2_final.tgz | Position weight matrix collection |
+
+---
+
+## Requirements
+
+### Software
+
+- Perl (version 5.20 or newer recommended)
+- Linux/Unix operating system
+- Patser v3e
+
+### Included Files
+
+The repository contains:
+
+- Patser executable (`patser-v3e`)
+- Alphabet file (`alphabet`)
+
+---
+
+## Installation
+
+### Step 1: Clone Repository
+
+```bash
+git clone https://github.com/GuoyanZhao-Lab/VRMOD.git
+cd VRMOD
+```
+
+### Step 2: Download PWM Database
+
+Download:
+
+```
+Mouse_phylonet_L30_Short_combined_Strategy2_final.tgz
+```
+
+Extract:
+
+```bash
+tar -xzvf Mouse_phylonet_L30_Short_combined_Strategy2_final.tgz
+```
+
+### Step 3: Configure Paths
+
+Open:
+
+```bash
+VRMOD_V0.1.pl
+```
+
+Modify the following variables:
+
+```perl
+my $path_patser = "/path/to/patser-v3e";
+my $path_alphabet = "/path/to/alphabet";
+
+my $dir = "/path/to/Mouse_phylonet_L30_Short_combined_Strategy2_final";
+```
+
+Replace with the appropriate paths on your system.
+
+---
+
+## Input
+
+VRMOD accepts genomic DNA sequences in FASTA format.
+
+Example:
+
+```fasta
+>sequence1
+ATGCGTACGATCGATCGATCGATCGATCG
+```
+
+---
+
+## Running VRMOD
+
+Example command:
+
+```bash
+perl VRMOD_V0.1.pl PWM_directory input.fa
+```
+
+Example:
+
+```bash
+perl VRMOD_V0.1.pl Mouse_phylonet_L30_Short_combined_Strategy2_final test.fa
+```
+
+---
+
+## Output
+
+For each input sequence file, VRMOD generates:
+
+```
+input.fa.pred_mod.txt
+```
+
+The output contains predicted cis-regulatory modules identified within the input sequence.
+
+Successful completion is indicated by:
+
+```
+# program finished
+```
+
+at the end of the output file.
+
+---
+
+## Example Analysis
+
+Example input:
+
+```bash
+test.fa
+```
+
+Run:
+
+```bash
+perl VRMOD_V0.1.pl Mouse_phylonet_L30_Short_combined_Strategy2_final test.fa
+```
+
+Expected output:
+
+```bash
+test.fa.pred_mod.txt
+```
+
+---
+
+## Troubleshooting
+
+### Patser not found
+
+Check:
+
+```perl
+$path_patser
+```
+
+points to the correct executable.
+
+### PWM directory not found
+
+Verify:
+
+```perl
+$dir
+```
+
+matches the location of the extracted PWM files.
+
+### No output generated
+
+Confirm:
+
+- Input FASTA file is correctly formatted.
+- PWM directory contains matrix files.
+- Patser executable has execute permissions.
+
+---
+
+## Citation
+
+If you use VRMOD in your research, please cite:
+
+Gonçalves T, Stewart C, Baxley S, Xu J, Boyer K, George B, Li D, Yang C, Gabel H, Piao X, Cruchaga C, Li Y, Wang T, Avraham O, Zhao G. Unlocking cis-regulatory landscapes across 500 million years of evolution and disease mechanisms. Manuscript under review at NAR Genomics and Bioinformatics. 2026 (In Revision).
+
+---
+
+## Contact
+
+Guoyan Zhao Lab
+
+GitHub:
+https://github.com/GuoyanZhao-Lab/VRMOD
+
    
