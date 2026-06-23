@@ -17,6 +17,7 @@ The software identifies clusters of transcription factor binding sites and predi
 | alphabet | Alphabet file required by Patser |
 | patser-v3e | Patser executable |
 | Mouse_phylonet_L30_Short_combined_Strategy2_final.tgz | Position weight matrix collection |
+| example | Test files with description |
 
 ---
 
@@ -105,7 +106,7 @@ perl VRMOD_V0.1.pl PWM_directory input.fa
 Example:
 
 ```bash
-perl VRMOD_V0.1.pl Mouse_phylonet_L30_Short_combined_Strategy2_final test.fa
+perl VRMOD_V0.1.pl Mouse_phylonet_L30_Short_combined_Strategy2_final input.fa
 ```
 
 ---
@@ -130,24 +131,24 @@ at the end of the output file.
 
 ---
 
-## Example Analysis
+## Example Analysis (more details in the example folder)
 
 Example input:
 
 ```bash
-test.fa
+Mus_musculus.GRCm38.dna.chromosomeTEST.19.fa
 ```
 
 Run:
 
 ```bash
-perl VRMOD_V0.1.pl Mouse_phylonet_L30_Short_combined_Strategy2_final test.fa
+perl VRMOD_V0.1.pl example Mus_musculus.GRCm38.dna.chromosomeTEST.19.fa
 ```
 
 Expected output:
 
 ```bash
-test.fa.pred_mod.txt
+Mus_musculus.GRCm38.dna.chromosomeTEST.19.fa.pred_mod.txt
 ```
 
 ---
